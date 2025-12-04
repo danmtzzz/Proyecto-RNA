@@ -19,8 +19,7 @@ Una implementación de la **Teoría de Resonancia Adaptativa (ART1)** con una in
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/tu_usuario/art1-pattern-recognition.git](https://github.com/tu_usuario/art1-pattern-recognition.git)
-    cd art1-pattern-recognition
+    git clone [https://github.com/danmtzzz/Proyecto-RNA.git](https://github.com/danmtzzz/Proyecto-RNA.git)
     ```
 
 2.  **Instalar dependencias:**
