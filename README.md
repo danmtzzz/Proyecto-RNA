@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![GUI](https://img.shields.io/badge/Interfaz-CustomTkinter-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Estado-Terminado-success?style=for-the-badge)
 
 Una implementación de la **Teoría de Resonancia Adaptativa (ART1)** con una interfaz gráfica moderna. Este proyecto no solo clasifica patrones binarios, sino que actúa como un sistema de **memoria y restauración visual**: es capaz de "recordar" la versión más perfecta de una imagen y usarla para corregir entradas ruidosas o incompletas en tiempo real.
 
