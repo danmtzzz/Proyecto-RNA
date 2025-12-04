@@ -23,22 +23,22 @@ class RedNeuronalART1:
     def aprender_patron(self, entrada):
         entrada = np.array(entrada)
         
-        # 1. Competencia
+        #Competencia
         activaciones = self.calcular_activacion(entrada)
         candidatos = np.argsort(activaciones)[::-1]
         
         ganadora_encontrada = False
         indice_ganadora = -1
         
-        # 2. Búsqueda en categorías existentes
+        #Búsqueda en categorías existentes
         for idx in candidatos:
             if not self.ocupadas[idx]:
                 continue
 
-            # Recuperar memoria actual
+            #Recuperar memoria actual
             prototipo_v = self.V[idx]
             
-            # Cálculo de similitud (Vigilancia)
+            #Cálculo de similitud (Vigilancia)
             interseccion = np.logical_and(entrada, prototipo_v).astype(int)
             magnitud_interseccion = np.sum(interseccion)
             magnitud_entrada = np.sum(entrada)
@@ -50,7 +50,6 @@ class RedNeuronalART1:
                 indice_ganadora = idx
                 ganadora_encontrada = True
                 
-                # [LÓGICA DE ACTUALIZACIÓN SOLICITADA]
                 magnitud_memoria = np.sum(prototipo_v)
                 
                 # Si la ENTRADA tiene MÁS DETALLES (más pixeles) que lo guardado:
@@ -63,14 +62,13 @@ class RedNeuronalART1:
                     nuevo_val_w = 1 / (self.gamma + magnitud_entrada)
                     self.W[idx] = entrada * nuevo_val_w
                     
-                    # print(f"Cat {idx+1} mejorada: {magnitud_memoria} -> {magnitud_entrada} pixels")
                 
                 # Si la entrada tiene MENOS o IGUAL detalles:
                 # NO HACEMOS NADA. Nos quedamos con la versión detallada que ya teníamos.
                 
                 break
         
-        # 3. Creación de Nueva Categoría (Si no coincidió con ninguna)
+        #Creación de Nueva Categoría (Si no coincidió con ninguna)
         if not ganadora_encontrada:
             try:
                 indice_ganadora = self.ocupadas.index(False)

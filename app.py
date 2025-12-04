@@ -167,29 +167,25 @@ class ArtAppModerno(ctk.CTk):
     def procesar_aprendizaje(self):
         if self.vector_actual is None: return
         
-        # 1. Actualizar vigilancia desde el slider
+        #Actualizar vigilancia desde el slider
         self.red.rho = self.slider_rho.get()
         
-        # 2. La red intenta reconocer o aprender
-        # Retorna el índice de la categoría (0 a 14) o -1 si falló.
+        #La red intenta reconocer o aprender
         cat_idx = self.red.aprender_patron(self.vector_actual)
         
         if cat_idx != -1:
             self.lbl_status.configure(text=f"✅ RECONOCIDO: CATEGORÍA {cat_idx + 1}", text_color="#2CC985")
             
-            # 3. Actualizar la galería de abajo
+            #Actualizar la galería de abajo
             self.actualizar_memoria()
             
-            # --- AQUÍ ESTÁ LA MAGIA ---
-            # Obtenemos la imagen "limpia" directamente de la memoria de la red
             patron_limpio = self.red.V[cat_idx]
             
-            # 4. Reemplazamos visualmente el dibujo del usuario por el patrón limpio
-            # Usamos tu función existente renderizar_vector apuntando al canvas de entrada
+            #Reemplazamos visualmente el dibujo del usuario por el patrón limpio
             self.renderizar_vector(self.canvas_entrada, patron_limpio, 300, 300)
             
-            # 5. IMPORTANTE: Actualizamos el vector actual del sistema
-            # Para que si el usuario sigue operando, el sistema sepa que ahora la imagen activa es la limpia
+            #Actualizamos el vector actual del sistema
+            #Para que si el usuario sigue operando, el sistema sepa que ahora la imagen activa es la limpia
             self.vector_actual = patron_limpio
             
         else:
@@ -197,25 +193,21 @@ class ArtAppModerno(ctk.CTk):
             # -------------------------
 
     def actualizar_memoria(self):
-        # Limpiamos caché de imágenes para no saturar RAM
         self.imagenes_referencia = self.imagenes_referencia[-1:] 
         
         for i in range(self.max_categorias):
-            # 1. Verificamos si la neurona está ocupada
+            #Se verifica si la neurona está ocupada
             esta_ocupada = self.red.ocupadas[i]
             
-            # --- CORRECCIÓN AQUÍ ---
-            # Leemos la Matriz V directamente (La memoria real de la red)
             patron = self.red.V[i]
-            # -----------------------
 
             if not esta_ocupada:
-                # Si está vacía: Borramos dibujo y ocultamos botón
+                #Si está vacía: Borramos dibujo y ocultamos botón
                 self.prototipos_canvas[i].delete("all")
                 self.prototipos_canvas[i].create_text(50, 50, text="Vacío", fill="#555", font=("Arial", 10))
                 self.botones_eliminar[i].pack_forget() 
             else:
-                # Si está llena: Dibujamos el patrón y mostramos botón
+                #Si está llena: Dibujamos el patrón y mostramos botón
                 self.renderizar_vector(self.prototipos_canvas[i], patron, 120, 100)
                 self.botones_eliminar[i].pack(pady=(0, 10))
            
