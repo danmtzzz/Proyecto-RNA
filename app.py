@@ -42,10 +42,10 @@ class ArtAppModerno(ctk.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
        
-        self.btn_cargar = ctk.CTkButton(self.sidebar_frame, text="📂 Cargar Imagen", command=self.cargar_imagen)
+        self.btn_cargar = ctk.CTkButton(self.sidebar_frame, text="Cargar Imagen", command=self.cargar_imagen)
         self.btn_cargar.grid(row=1, column=0, padx=20, pady=10)
 
-        self.btn_eliminar = ctk.CTkButton(self.sidebar_frame, text="🗑️ Eliminar Imagen", 
+        self.btn_eliminar = ctk.CTkButton(self.sidebar_frame, text="Eliminar Imagen", 
                                           fg_color="#8D4FC3", hover_color="#401555", # Color gris oscuro
                                           command=self.eliminar_imagen_actual)
         self.btn_eliminar.grid(row=2, column=0, padx=20, pady=(0, 10))
@@ -59,7 +59,7 @@ class ArtAppModerno(ctk.CTk):
         self.slider_rho.set(0.8)
         self.slider_rho.grid(row=5, column=0, padx=20, pady=(0, 20))
 
-        self.btn_procesar = ctk.CTkButton(self.sidebar_frame, text="⚡ APRENDER", fg_color="#2CC985", hover_color="#229A65", text_color="white", font=ctk.CTkFont(weight="bold"), command=self.procesar_aprendizaje)
+        self.btn_procesar = ctk.CTkButton(self.sidebar_frame, text="APRENDER", fg_color="#2CC985", hover_color="#229A65", text_color="white", font=ctk.CTkFont(weight="bold"), command=self.procesar_aprendizaje)
         self.btn_procesar.grid(row=6, column=0, padx=20, pady=10)
 
         self.btn_reset = ctk.CTkButton(self.sidebar_frame, text="Reiniciar Red", fg_color="#D84343", hover_color="#A83232", command=self.reiniciar_red)
