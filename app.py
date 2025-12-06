@@ -9,7 +9,7 @@ from utils.procesamiento import cargar_imagen_como_vector
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
-class ArtAppModerno(ctk.CTk):
+class ArtApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
@@ -253,5 +253,5 @@ class ArtAppModerno(ctk.CTk):
         self.lbl_status.configure(text=f"Categoría {indice + 1} eliminada.", text_color="orange")
 
 if __name__ == "__main__":
-    app = ArtAppModerno()
+    app = ArtApp()
     app.mainloop()
